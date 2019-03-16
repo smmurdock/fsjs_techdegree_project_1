@@ -117,8 +117,15 @@ console.log(getRandomQuote());
 
 function printQuote() {
   var quoteResults = getRandomQuote();
-  var printHTML =
+  var printHTML = '';
 }
+
+//   <p class="quote"> [quote here] </p>
+// <p class="source"> [source here]
+//   <span class="citation"> [citation here] </span>
+//   <span class="year"> [year here] </span>
+// </p>
+
 
 
 /***
