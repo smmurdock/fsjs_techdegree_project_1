@@ -121,7 +121,7 @@ function printQuote() {
     printHTML += ' </p>'
     document.getElementById('quote-box').innerHTML = printHTML;
     randomRGB();
-    // setTimeout(printQuote, 8000);
+    setTimeout(printQuote, 8000);
 }
 
 
