@@ -6,48 +6,43 @@ project 1 - A Random Quote Generator
 // starting variables
 
 let html = "";
-let red = ;
-let green = ;
-let blue = ;
-let rgbColor = ;
+let printHTML = "";
+let red = "";
+let green = "";
+let blue = "";
+let randomColor = "";
 
-/***
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-  Add the `citation` property to at least one object in the array.
-  Add the `year` property to at least one object in the array.
-  Use console.log() to log your array of quotes to the console.
-***/
+
+// Array of objects containing quotes
 
 let quotes = [
   {
-    quote: 'No one can make you feel inferior without your consent.'',
+    quote: 'No one can make you feel inferior without your consent.',
     source: 'Eleanor Roosevelt',
     citation: 'This is My Story',
     year: 1937,
     tag: 'inspirational',
   },
   {
-    quote: 'The only mystery in life is why the kamikaze pilots wore helmets.'',
+    quote: 'The only mystery in life is why the kamikaze pilots wore helmets.',
     source: 'Al McGuire',
     tag: 'humor',
   },
   {
-    quote: 'C makes it easy to shoot yourself in the foot; C++ makes it harder, but when you do, it blows away your whole leg.'',
+    quote: 'C makes it easy to shoot yourself in the foot; C++ makes it harder, but when you do, it blows away your whole leg.',
     source: 'Bjarne Stroustrup',
     year: 1986,
     tag: 'technology',
   },
   {
-    quote: 'Your ability to generate power is directly proportionate to your ability to relax.'',
+    quote: 'Your ability to generate power is directly proportionate to your ability to relax.',
     source: 'David Allen',
     citation: 'Getting Things Done: The Art of Stress-Free Productivity',
     year: 2015,
     tag: 'productivity',
   },
   {
-    quote: 'To the well-organized mind, death is but the next great adventure.'',
+    quote: 'To the well-organized mind, death is but the next great adventure.',
     source: 'J.K. Rowling',
     citation: 'Harry Potter and the Sorcerer\'s Stone',
     year: 1997,
@@ -89,63 +84,45 @@ let quotes = [
 ];
 
 
-/***
-  Create the `getRandomQuote` function to:
-   - Create a variable to store a random number
-   - Cse the random number to `return` a random quote object from the `quotes` array.
-***/
+// Function to select random object from array to display in viewport
 
 function getRandomQuote() {
   let randomNumber = Math.floor(Math.random() * quotes.length);
   return quotes[randomNumber];
 }
 
-console.log(getRandomQuote());
-
-/***
-  Create the `printQuote` function to:
-   - Call the `getRandomQuote` function and assign it to a variable.
-   - Create a variable for the HTML string and set it equal to an empty string.
-   - Use the HTML template in the instructions or the markup in the index.html file, AND
-     the random quote vairable to build your HTML string.
-   - Add the quote and source section to the HTML string.
-   - Use an if statement to check for the citation property before adding it to the HTML string.
-   - Use an if statement to check for the year property before adding it to the HTML string.
-   - Don't forget to close that final `p` tag.
-   - Set the `innerHTML` of the `quote-box` div to the HTML string.
-***/
-
-function printQuote() {
-  var quoteResults = getRandomQuote();
-  var printHTML = '';
-}
-
-//   <p class="quote"> [quote here] </p>
-// <p class="source"> [source here]
-//   <span class="citation"> [citation here] </span>
-//   <span class="year"> [year here] </span>
-// </p>
-
-
-
-/***
-  When the "Show another quote" button is clicked, the event listener
-  below will be triggered, and it will call, or "invoke", the `printQuote`
-  function. So do not make any changes to the line of code below this
-  comment.
-***/
-
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+//console.log(getRandomQuote());
 
 
 // random color generator for background
 
 function randomRGB() {
-  return Math.floor(Math.random() * 256);
+  red = Math.floor(Math.random() * 256);
+  green = Math.floor(Math.random() * 256);
+  blue = Math.floor(Math.random()* 256);
+  randomColor = "rgb(" + red + ", " + green + ", " + blue + ")";
+  console.log(randomColor);
+  document.body.style.background = randomColor;
 }
 
-red = randomRGB();
-green = randomRGB();
-blue = randomRGB();
-rgbColor = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
-html = '<div style="background-color:">' + rgbColor + '\"</div>';
+
+// Function to change quote and background color when button is clicked
+
+function printQuote() {
+  let quoteResults = getRandomQuote();
+  printHTML = '<p class="quote">' + quoteResults.quote + '</p>' + '<p class="source">' + quoteResults.source;
+    if (quoteResults.citation !== undefined) {
+      printHTML += '<span class="citation">' + quoteResults.citation + '</span>';
+    } if (quoteResults.year !== undefined) {
+      printHTML += '<span class="year">' + quoteResults.year + ', </span>';
+    } if (quoteResults.tag !== undefined) {
+      printHTML += '<span class="tag">' + quoteResults.tag + ' </span>';
+    }
+    printHTML += ' </p>'
+    document.getElementById('quote-box').innerHTML = printHTML;
+    randomRGB();
+    // setTimeout(printQuote, 8000);
+}
+
+
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
