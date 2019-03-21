@@ -1,4 +1,5 @@
 # Full Stack JavaScript Techdegree - Project 1
+Unit 1 Project - Random Quote Generator
 
 For this project, you'll create an app that displays random famous quotes each time a button is clicked. You will select your own quotes from famous historical figures, artists, scientists, celebrities, etc..
 
