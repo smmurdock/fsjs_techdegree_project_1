@@ -110,7 +110,7 @@ function randomRGB() {
 
 function printQuote() {
   let quoteResults = getRandomQuote();
-  printHTML = '<p class="quote">' + quoteResults.quote + '</p>' + '<p class="source">' + quoteResults.source;
+  printHTML = '<p class="quote">' + quoteResults.quote + '</p>' + '<p class="source">' + quoteResults.source + ' ';
     if (quoteResults.citation !== undefined) {
       printHTML += '<span class="citation">' + quoteResults.citation + '</span>';
     } if (quoteResults.year !== undefined) {
